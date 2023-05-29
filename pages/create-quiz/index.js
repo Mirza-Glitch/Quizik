@@ -35,7 +35,7 @@ function CreateQuiz() {
               className="block border border-gray-100 focus:border-gray-300 focus:outline-none shadow-sm rounded p-2 w-full"
               value={quizDetails["title"]}
               onChange={(e) => handleQuizDetails("title", e.target.value)}
-              placeholder="Write Question here..."
+              placeholder="Write Your Quiz Title Here..."
               minLength="6"
               required={true}
             />
@@ -48,7 +48,7 @@ function CreateQuiz() {
               value={quizDetails["desc"]}
               onChange={(e) => handleQuizDetails("desc", e.target.value)}
               rows="5"
-              placeholder="Write Question here..."
+              placeholder="Write Your Quiz Description Here..."
               required={true}
             />
           </div>

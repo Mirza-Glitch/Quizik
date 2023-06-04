@@ -1,5 +1,5 @@
 import { createAvatar } from "@dicebear/core";
-import { funEmoji } from '@dicebear/collection';
+import { funEmoji, thumbs } from '@dicebear/collection';
 
 function getAvatar(name) {
   const avatar = createAvatar(thumbs, { seed: name });

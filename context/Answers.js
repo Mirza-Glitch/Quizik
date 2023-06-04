@@ -20,7 +20,8 @@ export const MyAnswersProvider = ({ children }) => {
     let key = location.pathname.split("/")[2];
     let value = JSON.stringify(myAnswers);
     let name = localStorage.getItem("name");
-
+    let uniqueAs = myAnswers.filter((v,i,a)=>a.findIndex(v2=>['question','answer'].every(k=>v2[k] ===v[k]))===i)
+    setMyAnswers(uniqueAs)
     fetch(`${location.origin}/api/save-result`, {
       method: "post",
       headers: {
@@ -29,7 +30,7 @@ export const MyAnswersProvider = ({ children }) => {
       body: JSON.stringify({
         quizId: key,
         name,
-        questions: myAnswers,
+        questions: uniqueAs,
       }),
     })
       .then((r) => r.json())

@@ -2,9 +2,9 @@ import Link from "next/link";
 import timeSince from "@/utils/timeSince"
 
 export default function Card({ data }) {
-  const { title, desc, quizId, createdBy, expiresAt } = data;
+  const { title, desc, quizId, createdBy, expiresAt, willExpire } = data;
   
-  let expired = expiresAt ? timeSince(expiresAt) : "ago"
+  let expired = willExpire ? timeSince(expiresAt) : "ago"
   if(expired?.includes("ago")){
     return <></>
   }

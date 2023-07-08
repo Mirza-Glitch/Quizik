@@ -1,14 +1,14 @@
-function ToggleSwitch({ isChecked, handleToggle }) {
+function ToggleSwitch({ isChecked, handleToggle, labelText, toggleId = "toggle"}) {
   return (
     <>
       <label
-        htmlFor="toggle"
+        htmlFor={toggleId}
         className="block flex justify-between cursor-pointer font-medium text-sm"
       >
-      Add timer to your Questions? 
+      {labelText} 
         <div className="relative">
           <input
-            id="toggle"
+            id={toggleId}
             type="checkbox"
             className="sr-only"
             checked={isChecked}

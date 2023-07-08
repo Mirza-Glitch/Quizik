@@ -14,6 +14,10 @@ const quizSchema = new mongoose.Schema(
       type: Boolean,
       required: true,
     },
+    willExpire: {
+      type: Boolean,
+      required: true,
+    },
     timing: {
       type: Number,
       required: true,

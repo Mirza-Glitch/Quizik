@@ -13,6 +13,7 @@ export const MyQuestionsProvider = ({ children }) => {
     title: "",
     desc: "",
     timer: false,
+    willExpire: true,
     timing: 0,
     days: 3,
   });
@@ -245,9 +246,9 @@ export const MyQuestionsProvider = ({ children }) => {
     let isCreated = localStorage.getItem("createdQuestion");
     if (isCreated) {
       let createdDay = new Date(Number(isCreated));
-      return Date.now() > createdDay;
+      return !Date.now() > createdDay;
     }
-    return true;
+    return false;
   };
 
   const values = {

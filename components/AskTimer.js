@@ -14,7 +14,7 @@ function AskTimer() {
 
   return (
     <>
-      <ToggleSwitch isChecked={isChecked} handleToggle={handleToggle} />
+      <ToggleSwitch isChecked={isChecked} handleToggle={handleToggle} labelText={"Add timer to your Questions?"} />
       <div className="grid grid-cols-2 gap-2 p-2">
         {isChecked &&
           [15, 30, 45, 60].map((val, i) => {

@@ -1,27 +1,32 @@
 import { useState, useEffect, useContext } from "react";
 import MyQuestionsContext from "@/context/Questions";
 import MyDataContext from "@/context/MyData";
-import ModalCreateLater from "@/components/ModalCreateLater"
+import ModalCreateLater from "@/components/ModalCreateLater";
 import AskTimer from "@/components/AskTimer";
+import AskExpiry from "@/components/AskExpiry";
 import { GoBackBtn } from "@/components/BackBtn";
 
 function CreateQuiz() {
-  const { quizDetails, handleQuizDetails, handleDetailsSubmit, checkIfQuizAlreadyCreated } =
-    useContext(MyQuestionsContext);
+  const {
+    quizDetails,
+    handleQuizDetails,
+    handleDetailsSubmit,
+    checkIfQuizAlreadyCreated,
+  } = useContext(MyQuestionsContext);
   const { showSetProfileInfo } = useContext(MyDataContext);
-  const [createLater, setCreateLater] = useState(false)
+  const [createLater, setCreateLater] = useState(false);
 
   useEffect(() => {
     let name = localStorage.getItem("name");
     if (!name || name.trim() == "") {
       showSetProfileInfo();
     }
-    setCreateLater(checkIfQuizAlreadyCreated())
+    setCreateLater(checkIfQuizAlreadyCreated());
   }, []);
-
+  
   return (
     <>
-      {!createLater && <ModalCreateLater />}
+      {createLater && <ModalCreateLater />}
       <GoBackBtn />
       <form
         onSubmit={handleDetailsSubmit}
@@ -57,28 +62,7 @@ function CreateQuiz() {
           </div>
           <hr />
           <div className="mt-2 px-2">
-            <label className="block flex justify-between cursor-pointer font-semibold">
-              How many days would you like to keep your quiz live ?
-            </label>
-            <div className="grid grid-cols-3 gap-2 p-2">
-              {[3, 5, 7].map((val, i) => {
-                return (
-                  <button
-                    key={i}
-                    type="button"
-                    className={`p-2 rounded shadow-md border text-center text-sm font-medium hover:bg-blue-500 hover:border-blue-500 hover:text-white ${
-                      quizDetails["days"] == val
-                        ? "bg-blue-500 border-blue-500 text-white"
-                        : "border-gray-100 text-black bg-white"
-                    }`}
-                    onClick={() => handleQuizDetails("days", val)}
-                  >
-                    {val}
-                    <span className="text-xs"> days</span>
-                  </button>
-                );
-              })}
-            </div>
+            <AskExpiry />
           </div>
         </div>
         <button

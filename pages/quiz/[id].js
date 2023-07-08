@@ -215,15 +215,17 @@ export async function getServerSideProps(context) {
     };
   }
   let expDay = new Date(quizData?.expiresAt);
-  if (expDay <= new Date()) {
-    return {
-      props: {
-        quizData: {
-          expired: true,
+  if(quizData.willExpire){
+    if (expDay <= new Date()) {
+      return {
+        props: {
+          quizData: {
+            expired: true,
+          },
+          id: params.id,
         },
-        id: params.id,
-      },
-    };
+      };
+    }
   }
   return {
     props: {

@@ -247,7 +247,7 @@ export const MyQuestionsProvider = ({ children }) => {
     if (isCreated) {
       let createdDay = new Date(Number(isCreated));
       createdDay.setDate(createdDay.getDate() +1);
-      return Date.now() <= createdDay;
+      return Date.now() < createdDay;
     }
     return false;
   };

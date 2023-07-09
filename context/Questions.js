@@ -246,7 +246,8 @@ export const MyQuestionsProvider = ({ children }) => {
     let isCreated = localStorage.getItem("createdQuestion");
     if (isCreated) {
       let createdDay = new Date(Number(isCreated));
-      return !(Date.now() > createdDay);
+      createdDay.setDate(createdDay.getDate() +1);
+      return Date.now() <= createdDay;
     }
     return false;
   };

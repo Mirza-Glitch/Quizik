@@ -20,7 +20,7 @@ function CreateQuiz() {
 
   return (
     <main className="w-full text-center h-auto min-h-screen max-h-max p-5 bg-gray-100 py-10 relative">
-    {!createLater && <ModalCreateLater />}
+    {createLater && <ModalCreateLater />}
     <GoBackBtn />
     <form onSubmit={handleFormSubmit}>
       {myQuestions.map((val, i) => {
